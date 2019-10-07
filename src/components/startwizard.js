@@ -2,6 +2,7 @@ import React from 'react'
 import Step1 from './wizard-steps/step1'
 import Step2 from './wizard-steps/step2'
 import Step3 from './wizard-steps/step3'
+import Step4 from './wizard-steps/step4'
 
 export default class StartWizard extends React.Component {
     constructor(props) {
@@ -48,6 +49,7 @@ export default class StartWizard extends React.Component {
                 currentStep: currentStep + 1, 
             })
         }
+        console.log(this.state)
     }
 
     previousStep() {
@@ -105,12 +107,17 @@ export default class StartWizard extends React.Component {
                 handleChange={this.handleChange}
                 email={this.state.email}
                 />
-                 <Step2
+                <Step2
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
                 phoneNum={this.state.phoneNum}
                 />
-                  <Step3
+                <Step3
+                currentStep={this.state.currentStep}
+                handleChange={this.handleChange}
+                destination={this.state.destination}
+                />
+                <Step4
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
                 destination={this.state.destination}
