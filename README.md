@@ -1,0 +1,14 @@
+# FlightWatcher
+Type in a list of destinations you'd like to go to, the dates you'd like to go there and the maximum you'd like to pay. API will refresh twice a day and text you when there is an flight that meets your criteria. 
+
+## Technology Used
+- JavaScript
+- React 
+- Skyscanner Flight Search API
+- Twilio SMS API
+
+## How to use
+1. Clone repository
+2. Type `npm install` into console
+3. Type `npm start` into console 
+
