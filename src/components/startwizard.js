@@ -1,11 +1,12 @@
 import React from 'react'
+import Step1 from './wizard-steps/step1'
 
 export default class StartWizard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             currentStep: 1, 
-            destinations: {},
+            destination: '',
             startDate: '', 
             endDate: '', 
             maxPrice: '', 
@@ -14,8 +15,24 @@ export default class StartWizard extends React.Component {
             email: '', 
             phoneNum: ''
         }
+        this.nextStep = this.nextStep.bind(this)
+        this.previousStep = this.previousStep.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
+    handleChange(e) {
+        const {name, value} = e.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const {destination, startDate, endDate, maxPrice, firstName, lastName, email, phoneNum} = this.state
+        alert("Great Success!")
+    }
+    
     nextStep() {
         let currentStep = this.state.currentStep
         if (this.state.currentStep >= 5) {
@@ -42,9 +59,21 @@ export default class StartWizard extends React.Component {
         }
     }
 
+    get previousButton() {
+        
+    }
+
     render() {
         return(
-            <div>Hello</div>
+            <React.Fragment>
+                <h1>FlightWatcher</h1>
+                <h4>Step {this.state.currentStep}</h4>
+                <Step1
+                currentStep={this.state.currentStep}
+                handleChange={this.handleChange}
+                email={this.state.email}
+                />
+            </React.Fragment>
         )
     }
 }
