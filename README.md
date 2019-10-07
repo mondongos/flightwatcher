@@ -18,11 +18,12 @@ As a traveller on a budget,
 So I can set alerts, 
 I'd like to chose my destinations, dates, the max price and my phone number.
 ```
-- Setup a wizard with 5 steps
+- Setup a wizard with 6 steps
     - name
-    - number
+    - email
+    - phone number
     - destinations
     - dates
-    - phone number
+    - max price 
 - Create UI 
 - Store information in an array of objects

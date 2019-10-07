@@ -4,19 +4,27 @@ export default class StartWizard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentStep: 1
+            currentStep: 1, 
+            destinations: {},
+            startDate: '', 
+            endDate: '', 
+            maxPrice: '', 
+            firstName: '', 
+            lastName: '', 
+            email: '', 
+            phoneNum: ''
         }
     }
 
     nextStep() {
         let currentStep = this.state.currentStep
-        if (this.state.currentStep >= 4) {
+        if (this.state.currentStep >= 5) {
             this.setState({
-                currentStep: 5
+                currentStep: 6
             })
         } else {
             this.setState({
-                currentStep: currentStep + 1
+                currentStep: currentStep + 1, 
             })
         }
     }
