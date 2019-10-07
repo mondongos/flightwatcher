@@ -12,3 +12,17 @@ Type in a list of destinations you'd like to go to, the dates you'd like to go t
 2. Type `npm install` into console
 3. Type `npm start` into console 
 
+## User Stories
+``` 
+As a traveller on a budget, 
+So I can set alerts, 
+I'd like to chose my destinations, dates, the max price and my phone number.
+```
+- Setup a wizard with 5 steps
+    - name
+    - number
+    - destinations
+    - dates
+    - phone number
+- Create UI 
+- Store information in an array of objects
