@@ -3,6 +3,7 @@ import Step1 from './wizard-steps/step1'
 import Step2 from './wizard-steps/step2'
 import Step3 from './wizard-steps/step3'
 import Step4 from './wizard-steps/step4'
+import Step5 from './wizard-steps/step5'
 
 export default class StartWizard extends React.Component {
     constructor(props) {
@@ -18,14 +19,9 @@ export default class StartWizard extends React.Component {
             email: '', 
             phoneNum: ''
         }
-        this.nextStep = this.nextStep.bind(this)
-        this.previousStep = this.previousStep.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.previousButton = this.previousButton.bind(this)
-        this.nextButton = this.nextButton.bind(this)
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
         const {name, value} = e.target
         this.setState({
             [name]: value
@@ -34,15 +30,14 @@ export default class StartWizard extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const {destination, startDate, endDate, maxPrice, firstName, lastName, email, phoneNum} = this.state
-        
+        this.props.onComplete(this.state);
     }
     
-    nextStep() {
+    nextStep = () => {
         let currentStep = this.state.currentStep
-        if (this.state.currentStep >= 5) {
+        if (this.state.currentStep >= 4) {
             this.setState({
-                currentStep: 6
+                currentStep: 5
             })
         } else {
             this.setState({
@@ -52,7 +47,7 @@ export default class StartWizard extends React.Component {
         console.log(this.state)
     }
 
-    previousStep() {
+    previousStep = () => {
         let currentStep = this.state.currentStep
         if (this.state.currentStep <= 1) {
             this.setState({
@@ -65,7 +60,7 @@ export default class StartWizard extends React.Component {
         }
     }
 
-    previousButton() {
+    previousButton = () => {
         let currentStep = this.state.currentStep
         if(currentStep != 1) {
             return (
@@ -80,14 +75,30 @@ export default class StartWizard extends React.Component {
         }
     }
 
-    nextButton() {
+    nextButton = () => {
         let currentStep = this.state.currentStep
-        if(currentStep < 6) {
+        if(currentStep < 5) {
             return (
                 <button
                 className="btn btn-primary"
                 onClick={this.nextStep}>
                     Next
+                </button>
+            )
+        } else {
+            return null
+        }
+    }
+
+    submitButton = () => {
+        let currentStep = this.state.currentStep
+        if(currentStep == 5) {
+            return (
+                <button
+                className="btn btn-secondary"
+                onClick={this.handleSubmit}
+                >
+                    Submit
                 </button>
             )
         } else {
@@ -122,8 +133,14 @@ export default class StartWizard extends React.Component {
                 handleChange={this.handleChange}
                 destination={this.state.destination}
                 />
+                 <Step5
+                currentStep={this.state.currentStep}
+                handleChange={this.handleChange}
+                destination={this.state.destination}
+                />
                 {this.previousButton()}
                 {this.nextButton()}
+                {this.submitButton()}
                 </form>
             </React.Fragment>
         )

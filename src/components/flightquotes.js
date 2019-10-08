@@ -10,18 +10,24 @@ export default class FlightQuotes extends React.Component {
         this.getAPI()
     }
     async getAPI() {
-        const data = await fetchSkyScanner()
+        const data = await fetchSkyScanner("LHR-sky", "JFK-sky", "2019-12-06", "2020-01-08")
         this.setState({data})
+        console.log(this.state.data)
     }
     render() {
-        console.log(this.state.data && this.state.data.Places)
         return (
-            <div>
-                
-            {this.state.data && this.state.data.Places.map(place => {
-                return <p>{place.Name}</p>
-            })}
-            </div>
+            <React.Fragment>
+                <div>
+                    {this.state.data && this.state.data.Places.map(place => {
+                        return <p>{place.Name}</p>
+                    })}
+                </div>
+                <div>
+                    {this.state.data && this.state.data.Quotes.map(quote => {
+                        return <p>{quote.MinPrice}</p>
+                    })}
+                </div>
+         </React.Fragment>
         )
     }
 }

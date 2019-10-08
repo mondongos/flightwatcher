@@ -11,7 +11,7 @@ export default class Step1 extends React.Component {
                 className="form-inputs"
                 id="email"
                 name="email"
-                type="text"
+                type="email"
                 placeholder="Enter email"
                 value={this.props.email}
                 onChange={this.props.handleChange}
