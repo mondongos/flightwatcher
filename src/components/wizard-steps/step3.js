@@ -7,19 +7,25 @@ export default class Step3 extends React.Component {
         }
         return (
             <div className="form-group">
-                <select
-                className="form-inputs"
-                id="destination"
-                name="destination"
-                value={this.props.destination}
-                onChange={this.props.handleChange}
-                >
-                    <option value="Glasgow">Glasgow</option>
-                    <option value="Los Angeles">Los Angeles</option>
-                    <option value="Miami">Miami</option>
-                    <option value="Rome">Rome</option>
-                </select>
-            </div>
+            <input
+            className="form-inputs"
+            id="origin"
+            name="origin"
+            type="text"
+            placeholder="Enter origin"
+            value={this.props.origin}
+            onChange={this.props.handleChange}
+            />
+            <input
+            className="form-inputs"
+            id="destination"
+            name="destination"
+            type="text"
+            placeholder="Enter destination"
+            value={this.props.destination}
+            onChange={this.props.handleChange}
+            />
+        </div>
         )
     }
 }

@@ -4,6 +4,7 @@ import Step2 from './wizard-steps/step2'
 import Step3 from './wizard-steps/step3'
 import Step4 from './wizard-steps/step4'
 import Step5 from './wizard-steps/step5'
+import { Button } from 'react-bootstrap';
 
 export default class StartWizard extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ export default class StartWizard extends React.Component {
         this.state = {
             currentStep: 1, 
             destination: '',
+            origin: '',
             startDate: '', 
             endDate: '', 
             maxPrice: '', 
@@ -44,7 +46,6 @@ export default class StartWizard extends React.Component {
                 currentStep: currentStep + 1, 
             })
         }
-        console.log(this.state)
     }
 
     previousStep = () => {
@@ -64,11 +65,11 @@ export default class StartWizard extends React.Component {
         let currentStep = this.state.currentStep
         if(currentStep != 1) {
             return (
-                <button
-                className="btn btn-primary"
+                <Button
+                variant="outline-secondary"
                 onClick={this.previousStep}>
                     Back
-                </button>
+                </Button>
             )
         } else {
             return null
@@ -79,11 +80,11 @@ export default class StartWizard extends React.Component {
         let currentStep = this.state.currentStep
         if(currentStep < 5) {
             return (
-                <button
-                className="btn btn-primary"
+                <Button
+                variant="primary"
                 onClick={this.nextStep}>
                     Next
-                </button>
+                </Button>
             )
         } else {
             return null
@@ -94,12 +95,12 @@ export default class StartWizard extends React.Component {
         let currentStep = this.state.currentStep
         if(currentStep == 5) {
             return (
-                <button
-                className="btn btn-secondary"
+                <Button
+                variant="success"
                 onClick={this.handleSubmit}
                 >
                     Submit
-                </button>
+                </Button>
             )
         } else {
             return null
@@ -109,7 +110,6 @@ export default class StartWizard extends React.Component {
     render() {
         return(
             <React.Fragment>
-                <h1>FlightWatcher</h1>
                 <h4>Step {this.state.currentStep}</h4>
                 <form onSubmit={this.handleSubmit}>
 
