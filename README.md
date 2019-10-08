@@ -18,12 +18,9 @@ As a traveller on a budget,
 So I can set alerts, 
 I'd like to chose my destinations, dates, the max price and my phone number.
 ```
-- Setup a wizard with 6 steps
-    - name
-    - email
-    - phone number
-    - destinations
-    - dates
-    - max price 
-- Create UI 
-- Store information in an array of objects
+
+```
+As a traveller, 
+So I can find low cost flights, 
+I'd like to see the cost of flights to my destination. 
+```
