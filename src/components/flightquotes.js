@@ -12,8 +12,9 @@ export default class FlightQuotes extends React.Component {
     }
     async getAPI() {
         let {destination, origin, startDate, endDate} = this.props.wizardData
-        const data = await fetchSkyScanner("LHR-sky", "JFK-sky", startDate, endDate)
+        const data = await fetchSkyScanner(origin, destination, startDate, endDate)
         this.setState({data})
+        console.log(data)
     }
     render() {
         return (
@@ -26,7 +27,7 @@ export default class FlightQuotes extends React.Component {
                 <div>
                     {this.state.data && this.state.data.Quotes.map(quote => {
                         if(quote.Direct) {
-                        return <p>{quote.MinPrice}</p>
+                        return <p>Min Price: {quote.MinPrice}</p>
                     }})}
                 </div>
          </React.Fragment>

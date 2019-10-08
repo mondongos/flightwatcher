@@ -1,7 +1,7 @@
 export async function fetchSkyScanner(destination, origin, start, end) {
 
   try {
-    const DATA = await fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/" + origin + "/" + destination + "/" + start + "?inboundpartialdate=" + end + "2020-12-01", {
+    const DATA = await fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/UK/GBP/en-UK/" + origin + "/" + destination + "/" + start + "?inboundpartialdate=" + end, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",

@@ -11,8 +11,8 @@ export default class StartWizard extends React.Component {
         super(props)
         this.state = {
             currentStep: 1, 
-            destination: '',
-            origin: '',
+            destination: 'LAX-sky',
+            origin: 'LHR-sky',
             startDate: '', 
             endDate: '', 
             maxPrice: '', 
@@ -46,6 +46,7 @@ export default class StartWizard extends React.Component {
                 currentStep: currentStep + 1, 
             })
         }
+        console.log(this.state)
     }
 
     previousStep = () => {

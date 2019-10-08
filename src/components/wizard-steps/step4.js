@@ -12,7 +12,6 @@ export default class Step4 extends React.Component {
                 id="startDate"
                 name="startDate"
                 type="date"
-                placeholder="Enter start"
                 value={this.props.startDate}
                 onChange={this.props.handleChange}
                 />
@@ -21,7 +20,6 @@ export default class Step4 extends React.Component {
                 id="endDate"
                 name="endDate"
                 type="date"
-                placeholder="Enter end"
                 value={this.props.endDate}
                 onChange={this.props.handleChange}
                 />
