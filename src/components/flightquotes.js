@@ -1,12 +1,12 @@
 import React from 'react'
 import {fetchSkyScanner} from './utils/browsequotesapi'
+import {Row, Col} from 'react-bootstrap';
 
 export default class FlightQuotes extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: null,
-            wizard: null
+            data: null
         }
         this.getAPI()
     }
@@ -14,21 +14,45 @@ export default class FlightQuotes extends React.Component {
         let {destination, origin, startDate, endDate} = this.props.wizardData
         const data = await fetchSkyScanner(origin, destination, startDate, endDate)
         this.setState({data})
-        console.log(data)
     }
     render() {
+        let {destination, origin, startDate, endDate} = this.props.wizardData
         return (
             <React.Fragment>
+                <br></br>
                 <div>
-                    {this.state.data && this.state.data.Places.map(place => {
-                        return <p>{place.Name}</p>
-                    })}
+                    <Row>
+                        <Col><strong>From</strong></Col>
+                        <Col><strong>To</strong></Col>
+                    </Row>
+                    <Row>
+                        <Col>{origin}</Col>
+                        <Col>{destination}</Col>
+                    </Row>
+                    <br></br>
+                    <Row>
+                        <Col><strong>Depart</strong></Col>
+                        <Col><strong>Return</strong></Col>
+                    </Row>
+                    <Row>
+                        <Col>{startDate}</Col>
+                        <Col>{endDate}</Col>
+                    </Row>
                 </div>
+                <br></br>
                 <div>
+                    <Row>
+                        <Col><strong>Lowest Price</strong></Col>
+                    </Row>
+                    <Row>
                     {this.state.data && this.state.data.Quotes.map(quote => {
                         if(quote.Direct) {
-                        return <p>Min Price: {quote.MinPrice}</p>
-                    }})}
+                        return <Col>{quote.MinPrice}</Col>
+                        }
+                    })}
+                    </Row>
+
+
                 </div>
          </React.Fragment>
         )

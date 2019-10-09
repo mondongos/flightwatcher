@@ -13,8 +13,8 @@ export default class StartWizard extends React.Component {
             currentStep: 1, 
             destination: 'LAX-sky',
             origin: 'LHR-sky',
-            startDate: '', 
-            endDate: '', 
+            startDate: '2019-11-11', 
+            endDate: '2019-12-12', 
             maxPrice: '', 
             firstName: '', 
             lastName: '', 
@@ -64,7 +64,7 @@ export default class StartWizard extends React.Component {
 
     previousButton = () => {
         let currentStep = this.state.currentStep
-        if(currentStep != 1) {
+        if(currentStep !== 1) {
             return (
                 <Button
                 variant="outline-secondary"
@@ -94,7 +94,7 @@ export default class StartWizard extends React.Component {
 
     submitButton = () => {
         let currentStep = this.state.currentStep
-        if(currentStep == 5) {
+        if(currentStep === 5) {
             return (
                 <Button
                 variant="success"
