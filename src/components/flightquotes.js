@@ -1,6 +1,6 @@
 import React from 'react'
 import {fetchSkyScanner} from './utils/browsequotesapi'
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Button} from 'react-bootstrap';
 
 export default class FlightQuotes extends React.Component {
     constructor(props) {
@@ -15,12 +15,25 @@ export default class FlightQuotes extends React.Component {
         const data = await fetchSkyScanner(origin, destination, startDate, endDate)
         this.setState({data})
     }
+
+    refreshPage = () => {
+    }
+
     render() {
         let {destination, origin, startDate, endDate} = this.props.wizardData
         return (
             <React.Fragment>
                 <br></br>
                 <div>
+                    <Row>
+                        <Col>
+                            <Button 
+                            variant="primary"
+                            onClick={this.refreshPage()}>
+                                Do another search
+                            </Button>
+                        </Col>
+                    </Row>
                     <Row>
                         <Col><strong>From</strong></Col>
                         <Col><strong>To</strong></Col>
